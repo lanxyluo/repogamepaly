@@ -1,145 +1,380 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Play [Game Name] and thousands of other free online games at RepoGameplay. Enjoy the best HTML5 games with responsive design and seamless gameplay experience.">
-    <meta name="keywords" content="online games, free games, HTML5 games, [Game Name], browser games">
+    <meta name="description" content="Play [Game Title] online for free on [Your Domain]. [Short game description with keywords]">
+    <meta name="keywords" content="[Game Title], online games, free games, [relevant game categories]">
+    <meta name="author" content="Your Name">
+    <title>[Game Title] - Play Free Online at [Your Domain]</title>
     
-    <!-- SEO Meta Tags -->
-    <link rel="canonical" href="https://repogameplay.com/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="[Game Name] | RepoGameplay - Free Online Games">
-    <meta property="og:image" content="/images/og-image.jpg">
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://[yourdomain].com/game/[game-slug]">
     
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Game",
-        "name": "[Game Name]",
-        "description": "Play [Game Name] - an exciting online game with...",
-        "gamePlatform": "HTML5",
-        "applicationCategory": "Game",
-        "image": "/images/logo.jpg",
-        "operatingSystem": "Web"
-    }
-    </script>
-
-    <title>[Game Name] | RepoGameplay - Free Online Games</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <!-- Tailwind CSS -->
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Custom Apple-style Color Scheme -->
+    <!-- Custom Tailwind Configuration -->
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    'apple-gray': '#F5F5F7',
-                    'apple-dark': '#1D1D1F',
-                    'apple-blue': '#0071E3'
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#007AFF', // Apple blue
+                        secondary: '#5AC8FA', // Apple light blue
+                        dark: '#1D1D1F', // Apple dark
+                        light: '#F5F5F7', // Apple light
+                        accent: '#FF2D55', // Apple pink
+                    }
                 }
             }
         }
+    </script>
+    
+    <!-- Schema.org structured data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "[Game Title]",
+        "description": "[Game description]",
+        "genre": "[Game genre/category]",
+        "gamePlatform": "Web Browser",
+        "applicationCategory": "Game",
+        "operatingSystem": "Web Browser",
+        "url": "https://[yourdomain].com/game/[game-slug]",
+        "image": "https://[yourdomain].com/images/games/[game-slug].jpg",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+        }
     }
     </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Game container aspect ratio */
+        .game-container {
+            aspect-ratio: 16 / 9;
+            max-height: 80vh;
+        }
+        
+        /* Full screen button hover effect */
+        .fullscreen-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Custom scrollbar for game controls */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+        
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        
+        .dropdown {
+            display: none;
+        }
+        
+        .dropdown-container:hover .dropdown {
+            display: block;
+        }
+    </style>
 </head>
-
-<body class="bg-apple-gray">
-    <!-- Navigation Bar -->
-    <nav class="bg-white shadow-lg fixed w-full z-50">
-        <div class="max-w-7xl mx-auto px-4">
-            <div class="flex justify-between items-center h-16">
+<body class="bg-light text-dark">
+    <!-- Header (Same as homepage) -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex items-center justify-between">
                 <!-- Logo -->
-                <a href="/" class="flex items-center">
-                    <span class="text-2xl font-bold text-apple-dark">RepoGameplay</span>
-                </a>
-
-                <!-- Search Bar -->
-                <div class="flex-1 max-w-2xl mx-8">
-                    <input type="search" placeholder="Search games..." 
-                           class="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-apple-blue">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <img src="/logo.png" alt="[Your Domain] Logo" class="h-10 w-auto mr-2">
+                        <span class="text-2xl font-bold text-primary">[Your Domain]</span>
+                    </a>
                 </div>
-
-                <!-- All Games Dropdown -->
-                <div class="relative group">
-                    <button class="px-4 py-2 text-apple-dark hover:bg-apple-gray rounded-lg flex items-center">
-                        All Games
-                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </div>
+    </header>
+    
+    <!-- Game Categories Navigation -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3 overflow-x-auto">
+            <div class="flex space-x-6 whitespace-nowrap">
+                <a href="/games/action" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    <span class="w-8 h-8 flex items-center justify-center bg-red-100 rounded-lg mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
+                    </span>
+                    Action
+                </a>
+                <a href="/games/puzzle" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    <span class="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-lg mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                        </svg>
+                    </span>
+                    Puzzle
+                </a>
+                <a href="/games/racing" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    <span class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-lg mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                        </svg>
+                    </span>
+                    Racing
+                </a>
+                <a href="/games/sports" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    <span class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-lg mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </span>
+                    Sports
+                </a>
+                <a href="/games/strategy" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    <span class="w-8 h-8 flex items-center justify-center bg-yellow-100 rounded-lg mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                        </svg>
+                    </span>
+                    Strategy
+                </a>
+                <a href="/games/arcade" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    <span class="w-8 h-8 flex items-center justify-center bg-pink-100 rounded-lg mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                    </span>
+                    Arcade
+                </a>
+                <a href="/games/adventure" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    <span class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-lg mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </span>
+                    Adventure
+                </a>
+                <a href="/games/all" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
+                    <span class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-lg mr-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                        </svg>
+                    </span>
+                    More
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Breadcrumb Navigation -->
+        <div class="flex items-center text-sm mb-6">
+            <a href="/" class="text-gray-500 hover:text-primary">Home</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <a href="/games/[category]" class="text-gray-500 hover:text-primary">[Category]</a>
+            <span class="mx-2 text-gray-400">/</span>
+            <span class="text-gray-900 font-medium">[Game Title]</span>
+        </div>
+        
+        <!-- Game Title and Description -->
+        <h1 class="text-3xl font-bold mb-4">[Game Title]</h1>
+        
+        <!-- Game Container -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+            <!-- Game Frame -->
+            <div class="relative bg-black game-container w-full">
+                <!-- Game iframe will go here -->
+                <iframe id="game-frame" src="[IFRAME URL]" class="absolute top-0 left-0 w-full h-full border-0" allowfullscreen></iframe>
+                
+                <!-- Fullscreen Button -->
+                <button id="fullscreen-btn" class="fullscreen-btn absolute bottom-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded-lg hover:bg-opacity-70 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Game Actions -->
+            <div class="flex items-center justify-between p-4 border-t">
+                <div class="flex items-center space-x-4">
+                    <!-- Like/Favorite Button -->
+                    <button class="flex items-center text-gray-500 hover:text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                        </svg>
+                        Like
                     </button>
                     
-                    <!-- Dropdown Menu -->
-                    <div class="absolute hidden group-hover:block right-0 mt-2 w-48 bg-white shadow-xl rounded-lg py-2">
-                        <a href="#" class="block px-4 py-2 hover:bg-apple-gray">Action Games</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-apple-gray">Puzzle Games</a>
-                        <a href="#" class="block px-4 py-2 hover:bg-apple-gray">Adventure Games</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="pt-20 pb-12 px-4">
-        <!-- Game Header Section -->
-        <section class="max-w-7xl mx-auto mb-12 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold text-apple-dark mb-6">Play [Game Name]</h1>
-            <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
-                Experience the ultimate [game genre] adventure with [Game Name]! [Insert engaging game description with relevant keywords].
-            </p>
-            
-            <!-- Game Embed Area (Placeholder) -->
-            <div class="bg-white rounded-xl shadow-lg p-4 mb-8">
-                <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
-                    <p class="text-gray-500">Game Embed Area</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Games Grid -->
-        <section class="max-w-7xl mx-auto mb-12">
-            <h2 class="text-3xl font-bold text-apple-dark mb-8">Popular Games</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Game Thumbnail 1 -->
-                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
-                    <div class="aspect-video bg-gray-100"></div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">Game Title 1</h3>
-                        <p class="text-gray-600 text-sm">Action • 4.8★</p>
-                    </div>
+                    <!-- Share Button -->
+                    <button class="flex items-center text-gray-500 hover:text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                        </svg>
+                        Share
+                    </button>
+                    
+                    <!-- Report Button -->
+                    <button class="flex items-center text-gray-500 hover:text-primary">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        Report
+                    </button>
                 </div>
                 
-                <!-- Repeat for other game thumbnails -->
-            </div>
-        </section>
-
-        <!-- Game Features Section -->
-        <section class="max-w-7xl mx-auto mb-12">
-            <h2 class="text-3xl font-bold text-apple-dark mb-8">Game Features</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Exciting Gameplay</h3>
-                    <p class="text-gray-600">Detailed description of gameplay features...</p>
+                <div class="flex items-center space-x-2">
+                    <!-- Game played count -->
+                    <div class="text-sm text-gray-500">
+                        <span class="font-medium">15,487</span> plays
+                    </div>
+                    
+                    <!-- Rating stars -->
+                    <div class="flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-300" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                        </svg>
+                        <span class="ml-1 text-sm text-gray-500">(4.2)</span>
+                    </div>
                 </div>
-                <!-- Add more feature blocks -->
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-apple-dark text-white py-8">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <p class="mb-4">&copy; 2024 RepoGameplay. All rights reserved.</p>
-            <div class="flex justify-center space-x-6">
-                <a href="/about" class="hover:text-apple-blue">About Us</a>
-                <a href="/privacy" class="hover:text-apple-blue">Privacy Policy</a>
-                <a href="/contact" class="hover:text-apple-blue">Contact</a>
             </div>
         </div>
-    </footer>
-</body>
-</html>
+        
+        <!-- Game Description and Controls -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <!-- Game Description -->
+            <div class="md:col-span-2">
+                <h2 class="text-xl font-bold mb-4">About [Game Title]</h2>
+                <div class="prose max-w-none">
+                    <p>[Game description paragraph 1 - This should include keywords for SEO. Describe the game's concept, objectives, and unique features. Add relevant keywords naturally throughout the text.]</p>
+                    <p>[Game description paragraph 2 - More details about gameplay, characters, levels, or other interesting aspects of the game that would attract players.]</p>
+                    <h3 class="text-lg font-bold mt-6 mb-3">Game Features</h3>
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>[Feature 1]</li>
+                        <li>[Feature 2]</li>
+                        <li>[Feature 3]</li>
+                        <li>[Feature 4]</li>
+                        <li>[Feature 5]</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Game Controls -->
+            <div>
+                <h2 class="text-xl font-bold mb-4">How to Play</h2>
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <div class="custom-scrollbar overflow-y-auto max-h-[300px]">
+                        <h3 class="text-lg font-bold mb-3">Controls</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <span class="inline-block bg-gray-200 rounded px-2 py-1 text-xs font-bold mr-2">W</span>
+                                <span>Move Up</span>
+                
+                
+                <!-- Navigation - Desktop -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <div class="dropdown-container relative">
+                        <button class="font-medium hover:text-primary transition-colors flex items-center">
+                            All Games
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
+                            <a href="/games/action" class="block px-4 py-2 text-sm hover:bg-gray-100">Action Games</a>
+                            <a href="/games/puzzle" class="block px-4 py-2 text-sm hover:bg-gray-100">Puzzle Games</a>
+                            <a href="/games/racing" class="block px-4 py-2 text-sm hover:bg-gray-100">Racing Games</a>
+                            <a href="/games/sports" class="block px-4 py-2 text-sm hover:bg-gray-100">Sports Games</a>
+                            <a href="/games/strategy" class="block px-4 py-2 text-sm hover:bg-gray-100">Strategy Games</a>
+                            <a href="/games/arcade" class="block px-4 py-2 text-sm hover:bg-gray-100">Arcade Games</a>
+                            <a href="/games/all" class="block px-4 py-2 text-sm font-bold text-primary hover:bg-gray-100">View All Games</a>
+                        </div>
+                    </div>
+                    <a href="/new" class="font-medium hover:text-primary transition-colors">New Games</a>
+                    <a href="/popular" class="font-medium hover:text-primary transition-colors">Popular</a>
+                    <a href="/categories" class="font-medium hover:text-primary transition-colors">Categories</a>
+                </nav>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:block flex-1 max-w-md mx-6">
+                    <form action="/search" method="GET" class="relative">
+                        <input type="text" name="q" placeholder="Search games..." class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <div class="absolute left-3 top-2.5">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-gray-500 hover:text-primary focus:outline-none" id="mobile-menu-button">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Search (appears below header on mobile) -->
+            <div class="mt-3 md:hidden">
+                <form action="/search" method="GET" class="relative">
+                    <input type="text" name="q" placeholder="Search games..." class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                    <div class="absolute left-3 top-2.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Mobile Navigation Menu (Hidden by default) -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="py-2 space-y-1">
+                    <a href="/games/all" class="block px-4 py-2 font-medium hover:bg-gray-100">All Games</a>
+                    <a href="/new" class="block px-4 py-2 font-medium hover:bg-gray-100">New Games</a>
+                    <a href="/popular" class="block px-4 py-2 font-medium hover:bg-gray-100">Popular</a>
+                    <a href="/categories" class="block px-4 py-2 font-medium hover:bg-gray-100">Categories</a>
+                </div>
+                <div class="py-2 border-t border-gray-200">
+                    <p class="px-4 py-2 font-medium text-gray-500">Game Categories</p>
+                    <a href="/games/action" class="block px-4 py-2 text-sm hover:bg-gray-100">Action Games</a>
+                    <a href="/games/puzzle" class="block px-4 py-2 text-sm hover:bg-gray-100">Puzzle Games</a>
+                    <a href="/games/racing" class="block px-4 py-2 text-sm hover:bg-gray-100">Racing Games</a>
+                    <a href="/games/sports" class="block px-4 py-2 text-sm hover:bg-gray-100">Sports Games</a>
+                    <a href="/games/strategy" class="block px-4 py-2 text-sm hover:bg-gray-100">Strategy Games</a>
+                    <a href="/games/arcade" class="block px-4 py-2 text-sm hover:bg-gray-100">Arcade Games</a>
+                </div>
+            </div>
