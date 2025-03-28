@@ -1,451 +1,145 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Play Retro Pixel Adventure online for free on RepoGamePlay. A challenging platformer with stunning pixel art and engaging gameplay.">
-    <meta name="keywords" content="Retro Pixel Adventure, online games, free games, platformer, pixel games">
-    <meta name="author" content="RepoGamePlay">
-    <title>Retro Pixel Adventure - Play Free Online at RepoGamePlay</title>
+    <meta name="description" content="Play [Game Name] and thousands of other free online games at RepoGameplay. Enjoy the best HTML5 games with responsive design and seamless gameplay experience.">
+    <meta name="keywords" content="online games, free games, HTML5 games, [Game Name], browser games">
     
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://repogameplay.com/game/retro-pixel-adventure">
+    <!-- SEO Meta Tags -->
+    <link rel="canonical" href="https://repogameplay.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="[Game Name] | RepoGameplay - Free Online Games">
+    <meta property="og:image" content="/images/og-image.jpg">
     
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon.png">
-    
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#007AFF', // Apple blue
-                        secondary: '#5AC8FA', // Apple light blue
-                        dark: '#1D1D1F', // Apple dark
-                        light: '#F5F5F7', // Apple light
-                        accent: '#FF2D55', // Apple pink
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- Schema.org structured data for SEO -->
+    <!-- Schema.org Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "VideoGame",
-        "name": "Retro Pixel Adventure",
-        "description": "A challenging platformer with stunning pixel art and engaging gameplay.",
-        "genre": "Platformer",
-        "gamePlatform": "Web Browser",
+        "@type": "Game",
+        "name": "[Game Name]",
+        "description": "Play [Game Name] - an exciting online game with...",
+        "gamePlatform": "HTML5",
         "applicationCategory": "Game",
-        "operatingSystem": "Web Browser",
-        "url": "https://repogameplay.com/game/retro-pixel-adventure",
-        "image": "https://repogameplay.com/images/games/retro-pixel-adventure.jpg",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-        },
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "356",
-            "bestRating": "5",
-            "worstRating": "1"
+        "image": "/images/logo.jpg",
+        "operatingSystem": "Web"
+    }
+    </script>
+
+    <title>[Game Name] | RepoGameplay - Free Online Games</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Custom Apple-style Color Scheme -->
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'apple-gray': '#F5F5F7',
+                    'apple-dark': '#1D1D1F',
+                    'apple-blue': '#0071E3'
+                }
+            }
         }
     }
     </script>
-    
-    <!-- Custom CSS -->
-    <style>
-        /* Game container fixed height */
-        .game-container {
-            width: 100%;
-            height: 600px;
-        }
-        
-        /* Fullscreen button hover effect */
-        .fullscreen-btn:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        
-        .dropdown {
-            display: none;
-        }
-        
-        .dropdown-container:hover .dropdown {
-            display: block;
-        }
-
-        /* Progressive loading for images */
-        .game-img {
-            transition: opacity 0.3s ease-in-out;
-            opacity: 0;
-        }
-        
-        .game-img.loaded {
-            opacity: 1;
-        }
-    </style>
 </head>
-<body class="bg-light text-dark">
-    <!-- Header -->
-    <header class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-4 py-3">
-            <div class="flex items-center justify-between">
+
+<body class="bg-apple-gray">
+    <!-- Navigation Bar -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
-                <div class="flex items-center">
-                    <a href="/" class="flex items-center">
-                        <img src="/logo.png" alt="RepoGamePlay Logo" class="h-10 w-auto mr-2">
-                        <span class="text-2xl font-bold text-primary">RepoGamePlay</span>
-                    </a>
-                </div>
-                
-                <!-- Navigation - Desktop -->
-                <nav class="hidden md:flex items-center space-x-6">
-                    <div class="dropdown-container relative">
-                        <button class="font-medium hover:text-primary transition-colors flex items-center">
-                            All Games
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        <!-- Dropdown Menu -->
-                        <div class="dropdown absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
-                            <a href="/games/action" class="block px-4 py-2 text-sm hover:bg-gray-100">Action Games</a>
-                            <a href="/games/puzzle" class="block px-4 py-2 text-sm hover:bg-gray-100">Puzzle Games</a>
-                            <a href="/games/platformer" class="block px-4 py-2 text-sm hover:bg-gray-100">Platformer Games</a>
-                            <a href="/games/racing" class="block px-4 py-2 text-sm hover:bg-gray-100">Racing Games</a>
-                            <a href="/games/strategy" class="block px-4 py-2 text-sm hover:bg-gray-100">Strategy Games</a>
-                            <a href="/games/arcade" class="block px-4 py-2 text-sm hover:bg-gray-100">Arcade Games</a>
-                            <a href="/games/all" class="block px-4 py-2 text-sm font-bold text-primary hover:bg-gray-100">View All Games</a>
-                        </div>
-                    </div>
-                    <a href="/new" class="font-medium hover:text-primary transition-colors">New Games</a>
-                    <a href="/popular" class="font-medium hover:text-primary transition-colors">Popular</a>
-                    <a href="/categories" class="font-medium hover:text-primary transition-colors">Categories</a>
-                </nav>
-                
+                <a href="/" class="flex items-center">
+                    <span class="text-2xl font-bold text-apple-dark">RepoGameplay</span>
+                </a>
+
                 <!-- Search Bar -->
-                <div class="hidden md:block flex-1 max-w-md mx-6">
-                    <form action="/search" method="GET" class="relative">
-                        <input type="text" name="q" placeholder="Search games..." class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                        <div class="absolute left-3 top-2.5">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </div>
-                    </form>
+                <div class="flex-1 max-w-2xl mx-8">
+                    <input type="search" placeholder="Search games..." 
+                           class="w-full px-4 py-2 rounded-lg border focus:outline-none focus:ring-2 focus:ring-apple-blue">
                 </div>
-                
-                <!-- Mobile Menu Button -->
-                <div class="md:hidden">
-                    <button type="button" class="text-gray-500 hover:text-primary focus:outline-none" id="mobile-menu-button">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+
+                <!-- All Games Dropdown -->
+                <div class="relative group">
+                    <button class="px-4 py-2 text-apple-dark hover:bg-apple-gray rounded-lg flex items-center">
+                        All Games
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
                         </svg>
                     </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Search (appears below header on mobile) -->
-            <div class="mt-3 md:hidden">
-                <form action="/search" method="GET" class="relative">
-                    <input type="text" name="q" placeholder="Search games..." class="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
-                    <div class="absolute left-3 top-2.5">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
+                    
+                    <!-- Dropdown Menu -->
+                    <div class="absolute hidden group-hover:block right-0 mt-2 w-48 bg-white shadow-xl rounded-lg py-2">
+                        <a href="#" class="block px-4 py-2 hover:bg-apple-gray">Action Games</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-apple-gray">Puzzle Games</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-apple-gray">Adventure Games</a>
                     </div>
-                </form>
-            </div>
-            
-            <!-- Mobile Navigation Menu (Hidden by default) -->
-            <div class="md:hidden hidden" id="mobile-menu">
-                <div class="py-2 space-y-1">
-                    <a href="/games/all" class="block px-4 py-2 font-medium hover:bg-gray-100">All Games</a>
-                    <a href="/new" class="block px-4 py-2 font-medium hover:bg-gray-100">New Games</a>
-                    <a href="/popular" class="block px-4 py-2 font-medium hover:bg-gray-100">Popular</a>
-                    <a href="/categories" class="block px-4 py-2 font-medium hover:bg-gray-100">Categories</a>
-                </div>
-                <div class="py-2 border-t border-gray-200">
-                    <p class="px-4 py-2 font-medium text-gray-500">Game Categories</p>
-                    <a href="/games/action" class="block px-4 py-2 text-sm hover:bg-gray-100">Action Games</a>
-                    <a href="/games/puzzle" class="block px-4 py-2 text-sm hover:bg-gray-100">Puzzle Games</a>
-                    <a href="/games/platformer" class="block px-4 py-2 text-sm hover:bg-gray-100">Platformer Games</a>
-                    <a href="/games/racing" class="block px-4 py-2 text-sm hover:bg-gray-100">Racing Games</a>
-                    <a href="/games/strategy" class="block px-4 py-2 text-sm hover:bg-gray-100">Strategy Games</a>
-                    <a href="/games/arcade" class="block px-4 py-2 text-sm hover:bg-gray-100">Arcade Games</a>
                 </div>
             </div>
         </div>
-    </header>
-    
-    <!-- Game Categories Navigation -->
-    <div class="bg-white border-b">
-        <div class="container mx-auto px-4 py-3 overflow-x-auto">
-            <div class="flex space-x-6 whitespace-nowrap">
-                <a href="/games/action" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    <span class="w-8 h-8 flex items-center justify-center bg-red-100 rounded-lg mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </span>
-                    Action
-                </a>
-                <a href="/games/puzzle" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    <span class="w-8 h-8 flex items-center justify-center bg-purple-100 rounded-lg mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-purple-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
-                        </svg>
-                    </span>
-                    Puzzle
-                </a>
-                <a href="/games/platformer" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    <span class="w-8 h-8 flex items-center justify-center bg-green-100 rounded-lg mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                    </span>
-                    Platformer
-                </a>
-                <a href="/games/racing" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    <span class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-lg mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                        </svg>
-                    </span>
-                    Racing
-                </a>
-                <a href="/games/strategy" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    <span class="w-8 h-8 flex items-center justify-center bg-yellow-100 rounded-lg mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                    </span>
-                    Strategy
-                </a>
-                <a href="/games/arcade" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    <span class="w-8 h-8 flex items-center justify-center bg-pink-100 rounded-lg mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
-                    </span>
-                    Arcade
-                </a>
-                <a href="/games/more" class="flex items-center text-sm font-medium hover:text-primary transition-colors">
-                    <span class="w-8 h-8 flex items-center justify-center bg-gray-100 rounded-lg mr-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
-                        </svg>
-                    </span>
-                    More
-                </a>
-            </div>
-        </div>
-    </div>
-    
+    </nav>
+
     <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <!-- Breadcrumb Navigation -->
-        <div class="flex items-center text-sm mb-6">
-            <a href="/" class="text-gray-500 hover:text-primary">Home</a>
-            <span class="mx-2 text-gray-400">/</span>
-            <a href="/games/platformer" class="text-gray-500 hover:text-primary">Platformer</a>
-            <span class="mx-2 text-gray-400">/</span>
-            <span class="text-gray-900 font-medium">Retro Pixel Adventure</span>
-        </div>
-        
-        <!-- Game Title and Description -->
-        <h1 class="text-3xl font-bold mb-4">Retro Pixel Adventure</h1>
-        <p class="text-gray-600 mb-6">An exciting platformer game with beautiful pixel art graphics and challenging levels. Navigate through obstacles, collect coins, and defeat enemies in this retro-inspired adventure.</p>
-        
-        <!-- Game Container -->
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-            <!-- Game Frame with fixed height -->
-            <div class="relative bg-black game-container">
-                <!-- Game iframe - Using the provided itch.io embed URL -->
-                <iframe id="game-frame" src="https://itch.io/embed/3178176" class="absolute top-0 left-0 w-full h-full border-0" allowfullscreen></iframe>
-                
-                <!-- Fullscreen Button -->
-                <button id="fullscreen-btn" class="fullscreen-btn absolute bottom-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded-lg hover:bg-opacity-70 transition-all">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Game Description and Controls -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            <!-- Game Description -->
-            <div class="md:col-span-2">
-                <h2 class="text-xl font-bold mb-4">About Retro Pixel Adventure</h2>
-                <div class="prose max-w-none">
-                    <p>Retro Pixel Adventure is a challenging platformer game that takes you back to the golden era of gaming with its beautiful pixel art graphics and captivating gameplay. Travel through diverse environments, from lush forests to dangerous caves and mysterious castles.</p>
-                    <p>The game combines classic platforming mechanics with modern game design, providing a nostalgic yet fresh experience. Each level presents unique challenges and puzzles that will test your skills and reflexes. With responsive controls and precise movement, you'll feel in complete control of your character as you navigate through the treacherous landscapes.</p>
-                    
-                    <h3 class="text-lg font-bold mt-6 mb-3">Game Features</h3>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li>Beautiful pixel art graphics with smooth animations</li>
-                        <li>20+ challenging levels across 4 unique worlds</li>
-                        <li>Collectible coins and hidden secrets in each level</li>
-                        <li>Various enemies and boss battles</li>
-                        <li>Original soundtrack that enhances the retro gaming experience</li>
-                    </ul>
-                </div>
-            </div>
+    <main class="pt-20 pb-12 px-4">
+        <!-- Game Header Section -->
+        <section class="max-w-7xl mx-auto mb-12 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-apple-dark mb-6">Play [Game Name]</h1>
+            <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
+                Experience the ultimate [game genre] adventure with [Game Name]! [Insert engaging game description with relevant keywords].
+            </p>
             
-            <!-- Game Controls -->
-            <div>
-                <h2 class="text-xl font-bold mb-4">How to Play</h2>
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-lg font-bold mb-3">Controls</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <span class="inline-block bg-gray-200 rounded px-2 py-1 text-xs font-bold mr-2">ARROW KEYS</span>
-                            <span>Move left/right and climb ladders</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="inline-block bg-gray-200 rounded px-2 py-1 text-xs font-bold mr-2">SPACE</span>
-                            <span>Jump</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="inline-block bg-gray-200 rounded px-2 py-1 text-xs font-bold mr-2">Z</span>
-                            <span>Attack</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="inline-block bg-gray-200 rounded px-2 py-1 text-xs font-bold mr-2">X</span>
-                            <span>Special ability</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="inline-block bg-gray-200 rounded px-2 py-1 text-xs font-bold mr-2">ESC</span>
-                            <span>Pause game</span>
-                        </li>
-                    </ul>
-                    
-                    <h3 class="text-lg font-bold mt-6 mb-3">Tips</h3>
-                    <ul class="list-disc pl-5 space-y-1">
-                        <li>Time your jumps carefully to avoid obstacles</li>
-                        <li>Collect coins to unlock special abilities and extra lives</li>
-                        <li>Look for hidden paths that may lead to secret areas</li>
-                        <li>Some enemies can be defeated by jumping on them</li>
-                        <li>Save your special abilities for boss battles</li>
-                    </ul>
+            <!-- Game Embed Area (Placeholder) -->
+            <div class="bg-white rounded-xl shadow-lg p-4 mb-8">
+                <div class="aspect-video bg-gray-100 rounded-lg flex items-center justify-center">
+                    <p class="text-gray-500">Game Embed Area</p>
                 </div>
             </div>
-        </div>
-        
-        <!-- Related Games -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-bold mb-6">Similar Games You Might Like</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                <!-- Related Game 1 -->
-                <a href="/game/pixel-quest" class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="relative pb-[56.25%] bg-gray-200">
-                        <img data-src="/images/games/pixel-quest.jpg" alt="Pixel Quest" class="game-img absolute top-0 left-0 w-full h-full object-cover">
-                    </div>
+        </section>
+
+        <!-- Featured Games Grid -->
+        <section class="max-w-7xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-apple-dark mb-8">Popular Games</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Game Thumbnail 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="aspect-video bg-gray-100"></div>
                     <div class="p-4">
-                        <h3 class="font-bold text-lg mb-1">Pixel Quest</h3>
-                        <p class="text-gray-600 text-sm">Platformer, Adventure</p>
+                        <h3 class="font-bold text-lg mb-2">Game Title 1</h3>
+                        <p class="text-gray-600 text-sm">Action • 4.8★</p>
                     </div>
-                </a>
+                </div>
                 
-                <!-- Related Game 2 -->
-                <a href="/game/super-jump-world" class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="relative pb-[56.25%] bg-gray-200">
-                        <img data-src="/images/games/super-jump-world.jpg" alt="Super Jump World" class="game-img absolute top-0 left-0 w-full h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-1">Super Jump World</h3>
-                        <p class="text-gray-600 text-sm">Platformer, Action</p>
-                    </div>
-                </a>
-                
-                <!-- Related Game 3 -->
-                <a href="/game/retro-runner" class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="relative pb-[56.25%] bg-gray-200">
-                        <img data-src="/images/games/retro-runner.jpg" alt="Retro Runner" class="game-img absolute top-0 left-0 w-full h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-1">Retro Runner</h3>
-                        <p class="text-gray-600 text-sm">Platformer, Arcade</p>
-                    </div>
-                </a>
-                
-                <!-- Related Game 4 -->
-                <a href="/game/pixel-puzzler" class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="relative pb-[56.25%] bg-gray-200">
-                        <img data-src="/images/games/pixel-puzzler.jpg" alt="Pixel Puzzler" class="game-img absolute top-0 left-0 w-full h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-1">Pixel Puzzler</h3>
-                        <p class="text-gray-600 text-sm">Puzzle, Platformer</p>
-                    </div>
-                </a>
-                
-                <!-- Related Game 5 -->
-                <a href="/game/8bit-explorer" class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                    <div class="relative pb-[56.25%] bg-gray-200">
-                        <img data-src="/images/games/8bit-explorer.jpg" alt="8-Bit Explorer" class="game-img absolute top-0 left-0 w-full h-full object-cover">
-                    </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-1">8-Bit Explorer</h3>
-                        <p class="text-gray-600 text-sm">Adventure, Platformer</p>
-                    </div>
-                </a>
+                <!-- Repeat for other game thumbnails -->
+            </div>
+        </section>
+
+        <!-- Game Features Section -->
+        <section class="max-w-7xl mx-auto mb-12">
+            <h2 class="text-3xl font-bold text-apple-dark mb-8">Game Features</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Exciting Gameplay</h3>
+                    <p class="text-gray-600">Detailed description of gameplay features...</p>
+                </div>
+                <!-- Add more feature blocks -->
             </div>
         </section>
     </main>
-    
+
     <!-- Footer -->
-    <footer class="bg-dark text-white">
-        <div class="container mx-auto px-4 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <!-- About Site -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">About RepoGamePlay</h3>
-                    <p class="text-gray-400 mb-4">RepoGamePlay offers free online games that you can play right in your browser. No downloads, no installations - just instant fun!</p>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="/popular" class="text-gray-400 hover:text-white transition-colors">Popular Games</a></li>
-                        <li><a href="/new" class="text-gray-400 hover:text-white transition-colors">New Games</a></li>
-                        <li><a href="/categories" class="text-gray-400 hover:text-white transition-colors">Categories</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Game Categories -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Game Categories</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/games/action" class="text-gray-400 hover:text-white transition-colors">Action Games</a></li>
-                        <li><a href="/games/puzzle" class="text-gray-400 hover:text-white transition-colors">Puzzle Games</a></li>
-                        <li><a href="/games/platformer" class="text-gray-400 hover:text-white transition-colors">Platformer Games</a></li>
-                        <li><a href="/games/racing" class="text-gray-400 hover:text-white transition-colors">Racing Games</a></li>
-                        <li><a href="/games/strategy" class="text-gray-400 hover:text-white transition-colors">Strategy Games</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Support -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">Support</h3>
-                    <ul class="space-y-2">
-                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
-                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-                        <li><a href="/terms" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-                        <li><a href="/faq" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
-                    </ul>
-                </div>
+    <footer class="bg-apple-dark text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="mb-4">&copy; 2024 RepoGameplay. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <a href="/about" class="hover:text-apple-blue">About Us</a>
+                <a href="/privacy" class="hover:text-apple-blue">Privacy Policy</a>
+                <a href="/contact" class="hover:text-apple-blue">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
